@@ -16,7 +16,7 @@ if uploaded_file is not None:
     image = Image.open(uploaded_file)
     st.image(image, caption="Uploaded Image", use_column_width=True)
     resize = tf.image.resize(image,(256,256))
-    new_model = load_model(os.path.join('models','imageclassifier-2.h5'))
+    new_model = load_model(os.path.join('models','happy-sad-imageclassifier.h5'))
     output = new_model.predict(np.expand_dims(resize/255,0))
     st.write(output)
     if output > 0.5:
